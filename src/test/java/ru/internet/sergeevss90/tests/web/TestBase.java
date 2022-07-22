@@ -1,6 +1,5 @@
 package ru.internet.sergeevss90.tests.web;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +18,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
     static WebConfig config = ConfigFactory.create(WebConfig.class);
-    static String useRemote = System.getProperty("webPlatform", "local");
+    static String useRemote = System.getProperty("webPlatform", "remote");
     LoginPage loginPage = new LoginPage();
     MainPage mainPage = new MainPage();
     TaskPage taskPage = new TaskPage();
@@ -28,10 +27,6 @@ public class TestBase {
     @BeforeAll
     static void setUp() {
         BrowserWebDriver.configure();
-        if (useRemote.equals("remote")) {
-            Configuration.remote = String.format("https://%s:%s@%swd/hub",
-                    config.selenoidLogin(), config.selenoidPassword(), config.remoteUrl());
-        }
     }
 
     @BeforeEach

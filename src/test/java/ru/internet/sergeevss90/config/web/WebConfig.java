@@ -13,7 +13,7 @@ public interface WebConfig extends Config {
     String baseUrl();
     @DefaultValue("chrome")
     String browser();
-    @DefaultValue("103")
+    @DefaultValue("102")
     String browserVersion();
     @DefaultValue("1920x1080")
     String browserSize();
