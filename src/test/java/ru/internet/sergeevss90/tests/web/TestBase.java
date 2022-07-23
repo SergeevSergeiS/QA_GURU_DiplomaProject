@@ -1,9 +1,7 @@
 package ru.internet.sergeevss90.tests.web;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeEach;
-import ru.internet.sergeevss90.config.web.WebConfig;
 import ru.internet.sergeevss90.helpers.Attach;
 import ru.internet.sergeevss90.drivers.web.BrowserWebDriver;
 import ru.internet.sergeevss90.tests.web.pages.LoginPage;
