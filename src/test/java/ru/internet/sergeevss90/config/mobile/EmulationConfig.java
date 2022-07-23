@@ -7,12 +7,7 @@ import org.aeonbits.owner.Config;
 })
 public interface EmulationConfig extends Config {
 
-    @Key("platformName")
     String platformName();
-
-    @Key("deviceName")
     String deviceName();
-
-    @Key("platformVersion")
     String platformVersion();
 }

@@ -47,8 +47,7 @@ public class EmulationMobileDriver implements WebDriverProvider {
 
     private File getApp() {
         String appUrl = "";
-        String appPath = "src/test/resources/apk/Todoist To Do List Tasks v9632.apk";
-
+        String appPath = "src/test/resources/apk/com.todoist_v10052.apk";
         File app = new File(appPath);
         if (!app.exists()) {
             try (InputStream in = new URL(appUrl).openStream()) {

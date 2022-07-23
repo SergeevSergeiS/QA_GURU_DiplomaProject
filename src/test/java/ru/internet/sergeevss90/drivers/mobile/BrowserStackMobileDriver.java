@@ -26,7 +26,11 @@ public class BrowserStackMobileDriver implements WebDriverProvider {
         mutableCapabilities.setCapability("os_version", config.androidVersion());
         mutableCapabilities.setCapability("project", "QA GURU DiplomaProject SergeevSS");
         mutableCapabilities.setCapability("build", "browserstack-build-1");
-        mutableCapabilities.setCapability("name", "selenide mobile tests");
+        mutableCapabilities.setCapability("name", "selenide android tests");
+        mutableCapabilities.setCapability("unicodeKeyboard", true);
+        mutableCapabilities.setCapability("resetKeyboard", true);
+
+
 
         return new RemoteWebDriver(getBrowserstackUrl(), mutableCapabilities);
     }

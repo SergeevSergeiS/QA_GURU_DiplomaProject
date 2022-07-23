@@ -10,6 +10,7 @@ import ru.internet.sergeevss90.drivers.mobile.BrowserStackMobileDriver;
 import ru.internet.sergeevss90.drivers.mobile.EmulationMobileDriver;
 import ru.internet.sergeevss90.helpers.Attach;
 
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static io.qameta.allure.Allure.step;
 import static ru.internet.sergeevss90.helpers.Attach.getSessionId;
@@ -32,6 +33,7 @@ public class TestBase {
     @BeforeEach
     public void startDriver() {
         addListener("AllureSelenide", new AllureSelenide());
+        open();
     }
 
     @AfterEach
