@@ -11,19 +11,28 @@ public interface WebConfig extends Config {
 
     @DefaultValue("https://todoist.com/")
     String baseUrl();
+
     @DefaultValue("chrome")
     String browser();
+
     @DefaultValue("102")
     String browserVersion();
+
     @DefaultValue("1920x1080")
     String browserSize();
+
     String todoistLogin();
+
     String todoistPassword();
+
     String projectNumber();
+
     @DefaultValue("")
     String remoteUrl();
+
     @DefaultValue("")
     String selenoidLogin();
+
     @DefaultValue("")
     String selenoidPassword();
 }

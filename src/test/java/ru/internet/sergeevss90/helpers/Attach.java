@@ -18,6 +18,7 @@ import static org.openqa.selenium.logging.LogType.BROWSER;
 
 public class Attach {
     static WebConfig config = ConfigFactory.create(WebConfig.class);
+
     @Attachment(value = "{attachName}", type = "text/plain")
     public static String attachAsText(String attachName, String message) {
         return message;
@@ -70,7 +71,7 @@ public class Attach {
         return null;
     }
 
-    public static String getSessionId(){
+    public static String getSessionId() {
         return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
     }
 }

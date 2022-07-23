@@ -24,7 +24,7 @@ public class TestBase {
             Configuration.browser = BrowserStackMobileDriver.class.getName();
         } else if (driver.equals("emulation")) {
             Configuration.browser = EmulationMobileDriver.class.getName();
-        }  else {
+        } else {
             System.out.println("Incorrect stand name");
         }
         Configuration.browserSize = null;

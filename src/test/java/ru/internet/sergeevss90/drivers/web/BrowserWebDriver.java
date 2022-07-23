@@ -8,7 +8,6 @@ import ru.internet.sergeevss90.config.web.WebConfig;
 
 
 public class BrowserWebDriver {
-
     public static WebConfig config = ConfigFactory.create(WebConfig.class);
     static String useRemote = System.getProperty("webPlatform", "remote");
 
@@ -25,6 +24,7 @@ public class BrowserWebDriver {
         chromeOptions.addArguments("--disable-popup-blocking");
         chromeOptions.addArguments("--disable-notifications");
         chromeOptions.addArguments("--lang=en-en");
+
         if (useRemote.equals("remote")) {
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);

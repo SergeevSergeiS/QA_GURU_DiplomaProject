@@ -30,8 +30,6 @@ public class BrowserStackMobileDriver implements WebDriverProvider {
         mutableCapabilities.setCapability("unicodeKeyboard", true);
         mutableCapabilities.setCapability("resetKeyboard", true);
 
-
-
         return new RemoteWebDriver(getBrowserstackUrl(), mutableCapabilities);
     }
 

@@ -33,7 +33,6 @@ public class EmulationMobileDriver implements WebDriverProvider {
         options.setAppPackage("com.todoist");
         options.setAppActivity("com.todoist.activity.LoginActivity");
 
-
         return new AndroidDriver(getAppiumServerUrl(), options);
     }
 
