@@ -2,6 +2,7 @@ package ru.internet.sergeevss90.models;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
@@ -16,7 +17,8 @@ public class Specs {
 
     public static RequestSpecification getRequest = with()
             .header("Authorization", "Bearer " + token)
-            .baseUri(baseUrl);
+            .baseUri(baseUrl)
+            .contentType(ContentType.JSON);
 
     public static ResponseSpecification response200 = new ResponseSpecBuilder()
             .expectStatusCode(200)

@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import ru.internet.sergeevss90.models.CreateRequestBuilder;
 import ru.internet.sergeevss90.models.UpdateRequestBuilder;
 
+import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static ru.internet.sergeevss90.models.Specs.*;
@@ -20,124 +21,159 @@ public class TodoistApiTests extends TestBase {
     @Test
     @DisplayName("Get all user's projects")
     void getAllProjectsTest() {
-
-        given()
-                .spec(getRequest)
-                .when()
-                .get("/projects")
-                .then()
-                .spec(response200);
+        step("Get list of all user's projects", () -> {
+            given()
+                    .spec(getRequest)
+                    .when()
+                    .get("/projects")
+                    .then()
+                    .spec(response200);
+        });
     }
 
     @Test
-    @DisplayName("Get one user's project")
+    @DisplayName("Get one particular user's project")
     void getSingleProjectTest() {
-        CreateRequestBuilder ProjectData = given()
-                .spec(getRequest)
-                .when()
-                .get("/projects/" + projectNumber)
-                .then()
-                .spec(response200)
-                .extract().as(CreateRequestBuilder.class);
-        assertEquals(projectNumber, ProjectData.getId());
+        final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];
+
+        step("Get user's project", () -> {
+            projectData[0] = given()
+                    .spec(getRequest)
+                    .when()
+                    .get("/projects/" + projectNumber)
+                    .then()
+                    .spec(response200)
+                    .extract().as(CreateRequestBuilder.class);
+        });
+        step("Check project id in response", () ->
+                assertEquals(projectNumber, projectData[0].getId()));
     }
 
     @Test
-    @DisplayName("Adding a new project")
+    @DisplayName("Add new project")
     void createNewProjectTest() {
         CreateRequestBuilder createCredentials = new CreateRequestBuilder();
+        final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];
         createCredentials.setName(projectName);
-        CreateRequestBuilder ProjectData = given()
-                .spec(creationRequest)
-                .body(createCredentials)
-                .when()
-                .post("/projects")
-                .then()
-                .spec(response200)
-                .extract().as(CreateRequestBuilder.class);
-        assertEquals(projectName, ProjectData.getName());
+
+        step("Create project", () -> {
+            projectData[0] = given()
+                    .spec(creationRequest)
+                    .body(createCredentials)
+                    .when()
+                    .post("/projects")
+                    .then()
+                    .spec(response200)
+                    .extract().as(CreateRequestBuilder.class);
+        });
+        step("Check project id in response", () ->
+                assertEquals(projectName, projectData[0].getName()));
     }
 
     @Test
-    @DisplayName("Updating project name")
+    @DisplayName("Update project name")
     public void updateProjectTest() {
         UpdateRequestBuilder oldCreateCredentials = new UpdateRequestBuilder();
-        oldCreateCredentials.setName(outdatedTaskName);
-
-        long id = given()
-                .spec(creationRequest)
-                .body(oldCreateCredentials)
-                .when()
-                .post("/projects")
-                .then()
-                .spec(response200)
-                .body("name", is(outdatedTaskName))
-                .extract().jsonPath().getLong("id");
-
+        final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];
         UpdateRequestBuilder newCreateCredentials = new UpdateRequestBuilder();
+        final long[] id = new long[1];
+        oldCreateCredentials.setName(outdatedTaskName);
         newCreateCredentials.setName(updatedTaskName);
-        newCreateCredentials.setId(id);
 
-        given()
-                .spec(creationRequest)
-                .body(newCreateCredentials)
-                .when()
-                .post("/projects/" + id)
-                .then()
-                .spec(response204);
 
-        CreateRequestBuilder ProjectData = given()
-                .spec(getRequest)
-                .when()
-                .get("/projects/" + id)
-                .then()
-                .spec(response200)
-                .extract().as(CreateRequestBuilder.class);
+        step("Create project and save its id", () -> {
+            id[0] = given()
+                    .spec(creationRequest)
+                    .body(oldCreateCredentials)
+                    .when()
+                    .post("/projects")
+                    .then()
+                    .spec(response200)
+                    .body("name", is(outdatedTaskName))
+                    .extract().jsonPath().getLong("id");
 
-        assertNotEquals(outdatedTaskName, ProjectData.getName());
-        assertEquals(updatedTaskName, ProjectData.getName());
+            newCreateCredentials.setId(id[0]);
+        });
+        step("Change project's name", () -> {
+            given()
+                    .spec(creationRequest)
+                    .body(newCreateCredentials)
+                    .when()
+                    .post("/projects/" + id[0])
+                    .then()
+                    .spec(response204);
+        });
+        step("Get updated project data", () -> {
+            projectData[0] = given()
+                    .spec(getRequest)
+                    .when()
+                    .get("/projects/" + id[0])
+                    .then()
+                    .spec(response200)
+                    .extract().as(CreateRequestBuilder.class);
+        });
+        step("Check project name", () -> {
+            assertNotEquals(outdatedTaskName, projectData[0].getName());
+            assertEquals(updatedTaskName, projectData[0].getName());
+        });
     }
 
     @Test
-    @DisplayName("Adding a new task")
+    @DisplayName("Add a new task")
     void createNewTaskTest() {
         CreateRequestBuilder createCredentials = new CreateRequestBuilder();
+        final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];
         createCredentials.setContent(taskName);
         createCredentials.setProjectId(projectNumber);
 
-        CreateRequestBuilder ProjectData = given()
-                .spec(creationRequest)
-                .body(createCredentials)
-                .when()
-                .post("/tasks")
-                .then()
-                .spec(response200)
-                .extract().as(CreateRequestBuilder.class);
-
-        assertEquals(taskName, ProjectData.getContent());
+        step("Create task", () -> {
+            projectData[0] = given()
+                    .spec(creationRequest)
+                    .body(createCredentials)
+                    .when()
+                    .post("/tasks")
+                    .then()
+                    .spec(response200)
+                    .extract().as(CreateRequestBuilder.class);
+        });
+        step("Check task name", () ->
+                assertEquals(taskName, projectData[0].getContent()));
     }
 
     @Test
     @DisplayName("Delete project")
     void deleteProject() {
         UpdateRequestBuilder credentials = new UpdateRequestBuilder();
+        final long[] id = new long[1];
         credentials.setName("Delete this");
 
-        String id =
-                given()
-                        .spec(creationRequest)
-                        .body(credentials)
-                        .when()
-                        .post("/projects")
-                        .then()
-                        .spec(response200)
-                        .extract().jsonPath().getString("id");
-
-        given()
-                .spec(getRequest)
-                .when()
-                .delete("/projects/" + id)
-                .then()
-                .spec(response204);
+        step("Create project and save its id", () -> {
+            id[0] = given()
+                    .spec(creationRequest)
+                    .body(credentials)
+                    .when()
+                    .post("/projects")
+                    .then()
+                    .spec(response200)
+                    .extract().jsonPath().getLong("id");
+        });
+        step("Delete project", () -> {
+            given()
+                    .spec(getRequest)
+                    .when()
+                    .delete("/projects/" + id[0])
+                    .then()
+                    .spec(response204);
+        });
+        step("Check that project was deleted", () -> {
+            given()
+                    .spec(getRequest)
+                    .when()
+                    .get("/projects")
+                    .then()
+                    .spec(response200)
+                    .body("findAll{it.name =~/.*/}.name.flatten()",
+                            not((hasItem("Delete this"))));
+        });
     }
 }

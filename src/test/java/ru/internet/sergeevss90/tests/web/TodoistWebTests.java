@@ -14,7 +14,7 @@ public class TodoistWebTests extends TestBase {
     @DisplayName("UI authorization via e-mail and password")
     void loginTest() {
         step("Authorize", () ->
-            loginPage.doLogin(login, password));
+                loginPage.doLogin(login, password));
         step("Check page content", () -> {
             mainPage.checkFilterContent()
                     .checkCurrentUrl();
@@ -25,7 +25,7 @@ public class TodoistWebTests extends TestBase {
     @DisplayName("Redirect of unauthorized user to login page")
     void redirectTest() {
         step("Open 'Today' page without authorization", () ->
-            mainPage.openPage());
+                mainPage.openPage());
         step("Check redirection", () -> {
             mainPage.checkFilterAvailability();
             loginPage.checkLoginButton()
@@ -37,7 +37,7 @@ public class TodoistWebTests extends TestBase {
     @DisplayName("Main filters availability")
     void checkMainPAgeFiltersTest() {
         step("Authorize", () ->
-            loginPage.doLogin(login, password));
+                loginPage.doLogin(login, password));
         step("Check 'Inbox' filter", () -> {
             mainPage.openFilterInbox()
                     .checkCurrentUrl();
@@ -60,7 +60,7 @@ public class TodoistWebTests extends TestBase {
     @DisplayName("Task adding process")
     void addNewTaskTest() {
         step("Authorize", () ->
-            loginPage.doLogin(login, password));
+                loginPage.doLogin(login, password));
         step("Open task creation menu", () -> {
             taskPage.startTaskCreation();
         });
@@ -73,9 +73,9 @@ public class TodoistWebTests extends TestBase {
             taskPage.setPriority();
         });
         step("Finish task creation", () ->
-            taskPage.addNewTask());
+                taskPage.addNewTask());
         step("Check result", () ->
-            taskPage.checkTooltip()
+                taskPage.checkTooltip()
         );
     }
 
@@ -85,25 +85,25 @@ public class TodoistWebTests extends TestBase {
         step("Authorize", () ->
                 loginPage.doLogin(login, password));
         step("Open project creation menu", () ->
-            projectPage.startProjectCreation()
+                projectPage.startProjectCreation()
         );
         step("Add project name", () ->
-            projectPage.inputProjectName(projectName));
+                projectPage.inputProjectName(projectName));
         step("Finish project creation", () ->
-            projectPage.addNewProject()
+                projectPage.addNewProject()
         );
         step("Check result", () ->
-            projectPage.checkProjectCreation(projectName));
+                projectPage.checkProjectCreation(projectName));
     }
 
     @Test
     @DisplayName("'Upcoming' filter shows today's date")
     void dateComparisonTest() {
         step("Authorize", () ->
-            loginPage.doLogin(login, password));
+                loginPage.doLogin(login, password));
         step("Open upcoming filter", () ->
-            mainPage.openFilterUpcoming());
+                mainPage.openFilterUpcoming());
         step("Check displayed date", () ->
-            mainPage.checkUpcomingDate());
+                mainPage.checkUpcomingDate());
     }
 }
