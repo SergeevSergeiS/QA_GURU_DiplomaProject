@@ -15,7 +15,7 @@ import org.junit.jupiter.api.BeforeAll;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
-    static String useRemote = System.getProperty("webPlatform", "local");
+    static String useRemote = System.getProperty("webPlatform", "remote");
     LoginPage loginPage = new LoginPage();
     MainPage mainPage = new MainPage();
     TaskPage taskPage = new TaskPage();
