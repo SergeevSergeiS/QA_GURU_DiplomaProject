@@ -16,7 +16,7 @@ import static ru.internet.sergeevss90.tests.api.TestData.*;
 
 @Tag("API")
 @Tag("ALL")
-public class TodoistApiTests extends TestBase {
+public class ProjectTests extends TestBase {
 
     @Test
     @DisplayName("Get all user's projects")
@@ -80,7 +80,6 @@ public class TodoistApiTests extends TestBase {
         oldCreateCredentials.setName(outdatedTaskName);
         newCreateCredentials.setName(updatedTaskName);
 
-
         step("Create project and save its id", () -> {
             id[0] = given()
                     .spec(creationRequest)
@@ -119,33 +118,11 @@ public class TodoistApiTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Add a new task")
-    void createNewTaskTest() {
-        CreateRequestBuilder createCredentials = new CreateRequestBuilder();
-        final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];
-        createCredentials.setContent(taskName);
-        createCredentials.setProjectId(projectNumber);
-
-        step("Create task", () -> {
-            projectData[0] = given()
-                    .spec(creationRequest)
-                    .body(createCredentials)
-                    .when()
-                    .post("/tasks")
-                    .then()
-                    .spec(response200)
-                    .extract().as(CreateRequestBuilder.class);
-        });
-        step("Check task name", () ->
-                assertEquals(taskName, projectData[0].getContent()));
-    }
-
-    @Test
     @DisplayName("Delete project")
     void deleteProject() {
         UpdateRequestBuilder credentials = new UpdateRequestBuilder();
         final long[] id = new long[1];
-        credentials.setName("Delete this");
+        credentials.setName(removedProjectName);
 
         step("Create project and save its id", () -> {
             id[0] = given()
@@ -173,7 +150,7 @@ public class TodoistApiTests extends TestBase {
                     .then()
                     .spec(response200)
                     .body("findAll{it.name =~/.*/}.name.flatten()",
-                            not((hasItem("Delete this"))));
+                            not((hasItem(removedProjectName))));
         });
     }
 }

@@ -9,6 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import ru.internet.sergeevss90.drivers.mobile.BrowserStackMobileDriver;
 import ru.internet.sergeevss90.drivers.mobile.EmulationMobileDriver;
 import ru.internet.sergeevss90.helpers.Attach;
+import ru.internet.sergeevss90.tests.mobile.pages.SearchPage;
+import ru.internet.sergeevss90.tests.mobile.pages.LoginPage;
+import ru.internet.sergeevss90.tests.mobile.pages.MainPage;
+import ru.internet.sergeevss90.tests.mobile.pages.ProjectPage;
+import ru.internet.sergeevss90.tests.mobile.pages.TaskPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
@@ -16,7 +21,13 @@ import static io.qameta.allure.Allure.step;
 import static ru.internet.sergeevss90.helpers.Attach.getSessionId;
 
 public class TestBase {
+
     static String driver = System.getProperty("mobileDeviceHost", "browserstack");
+    LoginPage loginPage = new LoginPage();
+    MainPage mainPage = new MainPage();
+    TaskPage taskPage = new TaskPage();
+    ProjectPage projectPage = new ProjectPage();
+    SearchPage searchPage = new SearchPage();
 
     @BeforeAll
     public static void setup() {

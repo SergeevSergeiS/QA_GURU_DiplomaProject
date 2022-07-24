@@ -12,7 +12,8 @@ public class TestData {
             password = BrowserWebDriver.config.todoistPassword(),
             loginUrl = PartialLinks.LOGIN.getLink(),
             redirectUrl = Configuration.baseUrl + PartialLinks.REDIRECTEDLOGIN.getLink(),
-            inboxUrl = Configuration.baseUrl + PartialLinks.INBOXFILTER.getLink() + BrowserWebDriver.config.projectNumber(),
+            inboxUrl = Configuration.baseUrl + PartialLinks.INBOXFILTER.getLink()
+                    + BrowserWebDriver.config.projectNumber(),
             todayUrl = Configuration.baseUrl + PartialLinks.TODAYFILTER.getLink(),
             labelsUrl = Configuration.baseUrl + PartialLinks.LABELSFILTER.getLink(),
             projectName = generator.getTaskName(),

@@ -13,5 +13,6 @@ public class TestData {
             projectName = generator.getTaskName(),
             taskName = generator.getTaskDescription(),
             outdatedTaskName = generator.getStreetName(),
-            updatedTaskName = generator.getStreetName();
+            updatedTaskName = generator.getStreetName(),
+            removedProjectName = "Delete this";
 }
