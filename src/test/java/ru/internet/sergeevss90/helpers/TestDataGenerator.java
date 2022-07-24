@@ -10,7 +10,7 @@ public class TestDataGenerator {
     Faker faker = new Faker();
 
     public int getPriority() {
-        return faker.number().numberBetween(0, 5);
+        return faker.number().numberBetween(1, 5);
     }
 
     public String getTaskName() {
