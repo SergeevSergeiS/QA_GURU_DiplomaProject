@@ -15,10 +15,6 @@ public class ProjectPage {
         projectNameInput.sendKeys(name);
     }
 
-    public void setAsFavourite() {
-        favouriteChecker.click();
-    }
-
     public void finishProjectCreation() {
         createProjectButton.click();
     }

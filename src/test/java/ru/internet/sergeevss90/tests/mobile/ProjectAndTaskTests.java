@@ -39,8 +39,6 @@ public class ProjectAndTaskTests extends TestBase {
             mainPage.startProjectCreation());
         step("Set project name", () ->
             projectPage.addProjectName(projectName));
-        step("Mark project as favourite", () ->
-            projectPage.setAsFavourite());
         step("Finish project creation", () ->
             projectPage.finishProjectCreation());
         step("Check project name", () ->
