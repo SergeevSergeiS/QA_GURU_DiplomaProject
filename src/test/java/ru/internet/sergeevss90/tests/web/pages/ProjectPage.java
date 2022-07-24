@@ -15,7 +15,7 @@ public class ProjectPage {
             checkProjectList = $("#projects_list");
 
     public ProjectPage startProjectCreation() {
-        plusButton.click();
+        plusButton.hover().click();
         return this;
     }
 
