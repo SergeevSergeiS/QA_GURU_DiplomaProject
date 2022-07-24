@@ -1,16 +1,16 @@
 package ru.internet.sergeevss90.tests.web.pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import ru.internet.sergeevss90.drivers.web.BrowserWebDriver;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.SetValueOptions.withText;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static ru.internet.sergeevss90.tests.web.TestData.loginUrl;
+import static ru.internet.sergeevss90.tests.web.TestData.redirectUrl;
 
 public class LoginPage {
 
@@ -19,16 +19,16 @@ public class LoginPage {
             inputUsername = $("#element-0"),
             inputPassword = $("#element-3");
 
-    public void doLogin() {
-        open("/auth/login");
-        inputUsername.setValue(BrowserWebDriver.config.todoistLogin());
-        inputPassword.setValue(withText(BrowserWebDriver.config.todoistPassword()).sensitive())
+    public void doLogin(String login, String password) {
+        open(loginUrl);
+        inputUsername.setValue(login);
+        inputPassword.setValue(withText(password).sensitive())
                 .pressEnter();
     }
 
     public LoginPage checkCurrentUrl() {
         String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        String url = Configuration.baseUrl + "auth/login?success_page=%2Fapp%2Ftoday";
+        String url = redirectUrl;
         assertEquals(url, currentUrl);
         return this;
     }

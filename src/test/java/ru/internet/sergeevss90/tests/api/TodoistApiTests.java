@@ -8,7 +8,10 @@ import ru.internet.sergeevss90.models.UpdateRequestBuilder;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static ru.internet.sergeevss90.models.Specs.*;
+import static ru.internet.sergeevss90.tests.api.TestData.*;
 
 @Tag("API")
 @Tag("ALL")
@@ -17,25 +20,26 @@ public class TodoistApiTests extends TestBase {
     @Test
     @DisplayName("Get all user's projects")
     void getAllProjectsTest() {
+
         given()
                 .spec(getRequest)
                 .when()
                 .get("/projects")
                 .then()
-                .spec(response200)
-                .log().body();
+                .spec(response200);
     }
 
     @Test
     @DisplayName("Get one user's project")
     void getSingleProjectTest() {
-        given()
+        CreateRequestBuilder ProjectData = given()
                 .spec(getRequest)
                 .when()
                 .get("/projects/" + projectNumber)
                 .then()
                 .spec(response200)
-                .log().body();
+                .extract().as(CreateRequestBuilder.class);
+        assertEquals(projectNumber, ProjectData.getId());
     }
 
     @Test
@@ -43,15 +47,15 @@ public class TodoistApiTests extends TestBase {
     void createNewProjectTest() {
         CreateRequestBuilder createCredentials = new CreateRequestBuilder();
         createCredentials.setName(projectName);
-        given()
+        CreateRequestBuilder ProjectData = given()
                 .spec(creationRequest)
                 .body(createCredentials)
                 .when()
                 .post("/projects")
                 .then()
                 .spec(response200)
-                .log().body()
-                .body("name", is(projectName));
+                .extract().as(CreateRequestBuilder.class);
+        assertEquals(projectName, ProjectData.getName());
     }
 
     @Test
@@ -60,17 +64,15 @@ public class TodoistApiTests extends TestBase {
         UpdateRequestBuilder oldCreateCredentials = new UpdateRequestBuilder();
         oldCreateCredentials.setName(outdatedTaskName);
 
-        long id =
-                given()
-                        .spec(creationRequest)
-                        .body(oldCreateCredentials)
-                        .when()
-                        .post("/projects")
-                        .then()
-                        .spec(response200)
-                        .log().body()
-                        .body("name", is(outdatedTaskName))
-                        .extract().jsonPath().getLong("id");
+        long id = given()
+                .spec(creationRequest)
+                .body(oldCreateCredentials)
+                .when()
+                .post("/projects")
+                .then()
+                .spec(response200)
+                .body("name", is(outdatedTaskName))
+                .extract().jsonPath().getLong("id");
 
         UpdateRequestBuilder newCreateCredentials = new UpdateRequestBuilder();
         newCreateCredentials.setName(updatedTaskName);
@@ -82,8 +84,18 @@ public class TodoistApiTests extends TestBase {
                 .when()
                 .post("/projects/" + id)
                 .then()
-                .log().body()
                 .spec(response204);
+
+        CreateRequestBuilder ProjectData = given()
+                .spec(getRequest)
+                .when()
+                .get("/projects/" + id)
+                .then()
+                .spec(response200)
+                .extract().as(CreateRequestBuilder.class);
+
+        assertNotEquals(outdatedTaskName, ProjectData.getName());
+        assertEquals(updatedTaskName, ProjectData.getName());
     }
 
     @Test
@@ -93,15 +105,16 @@ public class TodoistApiTests extends TestBase {
         createCredentials.setContent(taskName);
         createCredentials.setProjectId(projectNumber);
 
-        given()
+        CreateRequestBuilder ProjectData = given()
                 .spec(creationRequest)
                 .body(createCredentials)
                 .when()
                 .post("/tasks")
                 .then()
                 .spec(response200)
-                .log().body()
-                .body("content", is(taskName));
+                .extract().as(CreateRequestBuilder.class);
+
+        assertEquals(taskName, ProjectData.getContent());
     }
 
     @Test

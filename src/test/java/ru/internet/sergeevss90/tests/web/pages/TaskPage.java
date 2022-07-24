@@ -24,13 +24,13 @@ public class TaskPage {
         return this;
     }
 
-    public TaskPage inputTaskName() {
-        taskNameInput.setValue(generator.getTaskName());
+    public TaskPage inputTaskName(String taskName) {
+        taskNameInput.setValue(taskName);
         return this;
     }
 
-    public TaskPage inputTaskDescription() {
-        taskDescriptionInput.setValue(generator.getTaskDescription());
+    public TaskPage inputTaskDescription(String taskDescription) {
+        taskDescriptionInput.setValue(taskDescription);
         return this;
     }
 

@@ -1,6 +1,7 @@
 package ru.internet.sergeevss90.models;
 
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
@@ -19,10 +20,12 @@ public class Specs {
 
     public static ResponseSpecification response200 = new ResponseSpecBuilder()
             .expectStatusCode(200)
+            .log(LogDetail.BODY)
             .build();
 
     public static ResponseSpecification response204 = new ResponseSpecBuilder()
             .expectStatusCode(204)
+            .log(LogDetail.BODY)
             .build();
 
     public static RequestSpecification creationRequest = with()

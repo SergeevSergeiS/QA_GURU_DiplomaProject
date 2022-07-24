@@ -11,4 +11,5 @@ public class CreateRequestBuilder {
     private String content;
     @JsonProperty("project_id")
     private String projectId;
+    private String id;
 }
