@@ -9,7 +9,9 @@ import ru.internet.sergeevss90.config.web.WebConfig;
 
 public class BrowserWebDriver {
     public static WebConfig config = ConfigFactory.create(WebConfig.class);
-    static String useRemote = System.getProperty("webPlatform", "remote");
+    public static boolean isRemoteWebDriver() {
+        return !config.remoteUrl().equals("");
+    }
 
     public static void configure() {
         Configuration.baseUrl = config.baseUrl();
@@ -25,7 +27,7 @@ public class BrowserWebDriver {
         chromeOptions.addArguments("--disable-notifications");
         chromeOptions.addArguments("--lang=en-en");
 
-        if (useRemote.equals("remote")) {
+        if (isRemoteWebDriver()) {
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
             Configuration.remote = String.format("https://%s:%s@%swd/hub",
