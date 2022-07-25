@@ -16,7 +16,7 @@ import static ru.internet.sergeevss90.tests.api.TestData.*;
 public class TaskTests extends TestBase {
 
     @Test
-    @DisplayName("Add a new task")
+    @DisplayName("Add task")
     void createNewTaskTest() {
         CreateRequestBuilder createCredentials = new CreateRequestBuilder();
         final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];

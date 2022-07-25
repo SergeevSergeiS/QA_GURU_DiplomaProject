@@ -50,7 +50,7 @@ public class ProjectTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Add new project")
+    @DisplayName("Add project")
     void createNewProjectTest() {
         CreateRequestBuilder createCredentials = new CreateRequestBuilder();
         final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];
