@@ -7,8 +7,8 @@
 ➠ [Test cases](#TestCases)
 
 ## :globe_with_meridians: <a name="TestCases"></a> Test cases
-### WEB
+- ### WEB
 
-### API
+- ### API
 
-### MOBILE
+- ### MOBILE
