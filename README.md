@@ -11,6 +11,8 @@
 
 ➠ [Launch from the terminal](#Terminal)
 
+➠ [Jenkins job](#Jenkins)
+
 ## :globe_with_meridians: <a name="TestCases"></a> Test cases
 - ### WEB
 <p align="left">
@@ -124,3 +126,5 @@ A --> D[api]
 A --> E[mobile]
 A --> F[all]
 ```
+
+## <a name="Jenkins"></a><img width="4%" title="Jenkins" src="images/logo/Jenkins.svg"> Jenkins [job](https://jenkins.autotests.cloud/job/SergeevSS90-Diploma-todoist/)
