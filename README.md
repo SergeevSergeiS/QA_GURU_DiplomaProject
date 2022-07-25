@@ -9,6 +9,8 @@
 
 ➠ [Technology stack](#TechnologyStack)
 
+➠ [Launch from the terminal](#Terminal)
+
 ## :globe_with_meridians: <a name="TestCases"></a> Test cases
 - ### WEB
 <p align="left">
@@ -100,3 +102,25 @@
         note left of State18 : Java domain-specific language
 ```
 
+## :technologist: <a name="Terminal"></a> Launch from the terminal
+
+### Local test run:
+
+```
+gradle clean mobileTests -DmobileDeviceHost=emulation
+```
+
+### Remote test run:
+
+```
+gradle clean 
+${TYPE}Tests
+```
+
+```mermaid
+graph LR
+A[TYPE] --> B[web]
+A --> D[api]
+A --> E[mobile]
+A --> F[all]
+```
