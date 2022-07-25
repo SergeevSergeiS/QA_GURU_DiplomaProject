@@ -8,7 +8,16 @@
 
 ## :globe_with_meridians: <a name="TestCases"></a> Test cases
 - ### WEB
+<p align="left">
+<img title="Web" src="images/screenshots/Web.PNG">
+</p>
 
 - ### API
+<p align="left">
+<img title="Api" src="images/screenshots/Api.PNG">
+</p>
 
 - ### MOBILE
+<p align="left">
+<img title="Mobile" src="images/screenshots/Mobile.PNG">
+</p>
