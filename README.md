@@ -128,3 +128,13 @@ A --> F[all]
 ```
 
 ## <a name="Jenkins"></a><img width="4%" title="Jenkins" src="images/logo/Jenkins.svg"> Jenkins [job](https://jenkins.autotests.cloud/job/SergeevSS90-Diploma-todoist/)
+
+<p align="center">
+  <img src="images/screenshots/Jenkins.PNG">
+</p>
+
+### :robot: Build Options
+
+<p align="center">
+  <img src="images/screenshots/BuildOptions.PNG">
+</p>
