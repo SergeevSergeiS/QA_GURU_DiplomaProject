@@ -12,4 +12,6 @@ public interface EmulationConfig extends Config {
     String deviceName();
 
     String platformVersion();
+
+    String appiumServerUrl();
 }

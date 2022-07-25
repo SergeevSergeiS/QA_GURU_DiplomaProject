@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ProjectPage {
         public SelenideElement
-            plusButton = $(byXpath("(//button[@type='button'])[9]")),
+            plusButton = $("[aria-label='Add Project']"),
             addProjectButton = $(byText("Add")),
             nameProject = $("#edit_project_modal_field_name"),
             checkProjectList = $("#projects_list");

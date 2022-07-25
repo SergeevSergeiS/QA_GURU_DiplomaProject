@@ -17,5 +17,4 @@ public interface BrowserstackConfig extends Config {
     String url();
 
     String urlApp();
-
 }
