@@ -13,6 +13,8 @@
 
 ➠ [Jenkins job](#Jenkins)
 
+➠ [Allure Report integration](#Report)
+
 ## :globe_with_meridians: <a name="TestCases"></a> Test cases
 - ### WEB
 <p align="left">
@@ -127,7 +129,7 @@ A --> E[mobile]
 A --> F[all]
 ```
 
-## <a name="Jenkins"></a><img width="4%" title="Jenkins" src="images/logo/Jenkins.svg"> Jenkins [job](https://jenkins.autotests.cloud/job/SergeevSS90-Diploma-todoist/)
+## <a name="Jenkins"></a><img width="4%" title="Jenkins" src="images/logo/Jenkins.svg"> Jenkins [build](https://jenkins.autotests.cloud/job/SergeevSS90-Diploma-todoist/)
 
 <p align="center">
   <img src="images/screenshots/Jenkins.PNG">
@@ -138,3 +140,24 @@ A --> F[all]
 <p align="center">
   <img src="images/screenshots/BuildOptions.PNG">
 </p>
+
+## <a name="Report"></a><img width="4%" title="Allure Report" src="images/logo/Allure_Report.svg"> Allure [Report](https://jenkins.autotests.cloud/job/SergeevSS90-Diploma-todoist/)
+
+### Overview
+
+<p align="center">
+<img title="Allure reports Overview tab screenshot" src="images/screenshots/AR-main_page.PNG">
+</p>
+
+### Test Suites
+
+<p align="center">
+<img title="Allure reports Test suites tab screenshot" src="images/screenshots/AR-test_cases.PNG">
+</p>
+
+### Graphs
+
+<p align="center">
+<img title="Allure reports Behaviors tab screenshot" src="images/screenshots/AR-graphs.PNG">
+</p>
+
