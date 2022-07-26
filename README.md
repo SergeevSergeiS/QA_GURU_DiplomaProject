@@ -109,13 +109,27 @@
 ## :technologist: <a name="Terminal"></a> Launch from the terminal
 
 ### Local test run:
-
+> There are config files with parameters for launch tests <br>
+> in the resources/configuration directory. <br>
+> It's required to fill in the following files: <br>
+> src/test/resources/config/web/local.properties <br>
+> src/test/resources/config/mobile/emulation.properties <br>
+> (examples are included to this github project). <br>
+> Once it's done, you can run the following commands:
 ```
+gradle clean webTests
 gradle clean mobileTests -DmobileDeviceHost=emulation
 ```
 
 ### Remote test run:
-
+> There are config files with parameters for launch tests <br>
+> in the resources/configuration directory. <br>
+> It's required to fill in the following files: <br>
+> src/test/resources/config/web/remote.properties <br>
+> src/test/resources/config/mobile/browserstack.properties <br>
+> src/test/resources/config/api/api.properties <br>
+> (examples are included to this github project). <br>
+> Once it's done, you can run the following commands:
 ```
 gradle clean 
 ${TYPE}Tests
