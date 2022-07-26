@@ -19,6 +19,8 @@
 
 ➠ [Browserstack build](#Browserstack)
 
+➠ [Notifications on Telegram](#Telegram)
+
 ## :globe_with_meridians: <a name="TestCases"></a> Test cases
 - ### WEB
 <p align="left">
@@ -203,4 +205,10 @@ A --> F[all]
 
 <p align="center">
 <img title="Browserstack build" src="images/screenshots/BS-build.PNG">
+</p>
+
+## <a name="Telegram"></a><img width="4%" title="Telegram" src="images/logo/Telegram.svg"> Notification on Telegram
+
+<p align="center">
+  <img src="images/screenshots/TG.PNG">
 </p>
