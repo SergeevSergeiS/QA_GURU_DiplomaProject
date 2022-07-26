@@ -1,9 +1,11 @@
 # Automated web/mobile/api tests for the [Todoist](http://todoist.com/) task manager  - graduation project ([QA.GURU](https://qa.guru/) school)
-<p align="left">
+<p align="center">
 <img title="Todoist" src="images/logo/todoist.PNG">
 </p>
 
-##  :page_with_curl: Content
+<a id="lift"></a>
+
+## :page_with_curl: Content
 
 ➠ [Test cases](#TestCases)
 
@@ -21,19 +23,21 @@
 
 ➠ [Notifications on Telegram](#Telegram)
 
+➠ [Video examples](#Video)
+
 ## :globe_with_meridians: <a name="TestCases"></a> Test cases
 - ### WEB
-<p align="left">
+<p align="center">
 <img title="Web" src="images/screenshots/Web.PNG">
 </p>
 
 - ### API
-<p align="left">
+<p align="center">
 <img title="Api" src="images/screenshots/Api.PNG">
 </p>
 
 - ### MOBILE
-<p align="left">
+<p align="center">
 <img title="Mobile" src="images/screenshots/Mobile.PNG">
 </p>
 
@@ -212,3 +216,18 @@ A --> F[all]
 <p align="center">
   <img src="images/screenshots/TG.PNG">
 </p>
+
+## <a name="Video"></a> :tv: Video examples
+### Selenoid - web browser
+
+<p align="center">
+<img src="images/gifs/AddTaskWeb.gif" alt="video" width="600">
+</p>
+
+### Browserstack - mobile application
+
+<p align="center">
+<img src="images/gifs/AddTaskMobile.gif" alt="video" width="600">
+</p>
+
+:arrow_up: [Up the page](#lift)
