@@ -230,4 +230,4 @@ A --> F[all]
 <img src="images/gifs/AddTaskMobile.gif" alt="video" width="600">
 </p>
 
-:arrow_up: [Up the page](#lift)
+:arrow_up: [Go up](#lift)
