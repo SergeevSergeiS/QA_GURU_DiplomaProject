@@ -11,11 +11,13 @@
 
 ➠ [Launch from the terminal](#Terminal)
 
-➠ [Jenkins job](#Jenkins)
+➠ [Jenkins build](#Jenkins)
 
 ➠ [Allure Report integration](#Report)
 
 ➠ [Allure TestOps integration](#TestOps)
+
+➠ [Browserstack build](#Browserstack)
 
 ## :globe_with_meridians: <a name="TestCases"></a> Test cases
 - ### WEB
@@ -197,8 +199,8 @@ A --> F[all]
 <img title="Allure TestOps Launch screenshot" src="images/screenshots/ATO-launch.PNG">
 </p>
 
-## <a name="Browserstack"></a><img width="4%" title="Browserstack" src="images/logo/browserstack.svg"> Browserstack [build](https://app-automate.browserstack.com/dashboard/v2/builds/264e9773671aa545dbd91104f9a82bd569c9d8e2/sessions/ebaf2579855ea6f0025e3eb466ab2c94b00ee5cf)
+## <a name="Browserstack"></a><img width="4%" title="Browserstack" src="images/logo/Browserstack.svg"> Browserstack [build](https://app-automate.browserstack.com/dashboard/v2/builds/264e9773671aa545dbd91104f9a82bd569c9d8e2/sessions/ebaf2579855ea6f0025e3eb466ab2c94b00ee5cf)
 
 <p align="center">
-<img title="Allure TestOps Launch screenshot" src="images/screenshots/BS-build.PNG">
+<img title="Browserstack build" src="images/screenshots/BS-build.PNG">
 </p>
