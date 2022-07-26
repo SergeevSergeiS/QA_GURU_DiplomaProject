@@ -97,7 +97,7 @@
         State18 --> State8
         State12 --> State8
         note right of State2 : Code writing
-        note left of State3 : Frameworks
+        note left of State3 : Testing frameworks
         note left of State4 : Version Control System
         note left of State5 : Project building
         note left of State6 : Automation server
