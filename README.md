@@ -15,6 +15,8 @@
 
 ➠ [Allure Report integration](#Report)
 
+➠ [Allure TestOps integration](#TestOps)
+
 ## :globe_with_meridians: <a name="TestCases"></a> Test cases
 - ### WEB
 <p align="left">
@@ -175,3 +177,28 @@ A --> F[all]
 <img title="Allure reports Behaviors tab screenshot" src="images/screenshots/AR-graphs.PNG">
 </p>
 
+## <a name="TestOps"></a><img width="4%" title="Allure TestOps" src="images/logo/Allure_TO.svg"> Allure [TestOps](https://allure.autotests.cloud/project/1501/)
+
+### Dashboards
+
+<p align="center">
+<img title="Allure TestOps Dashboard screenshot" src="images/screenshots/ATO-dashboards.PNG">
+</p>
+
+### Test cases
+
+<p align="center">
+<img title="Allure Test cases Dashboard screenshot" src="images/screenshots/ATO-test_cases.PNG">
+</p>
+
+### Launch
+
+<p align="center">
+<img title="Allure TestOps Launch screenshot" src="images/screenshots/ATO-launch.PNG">
+</p>
+
+## <a name="Browserstack"></a><img width="4%" title="Browserstack" src="images/logo/browserstack.svg"> Browserstack [build](https://app-automate.browserstack.com/dashboard/v2/builds/264e9773671aa545dbd91104f9a82bd569c9d8e2/sessions/ebaf2579855ea6f0025e3eb466ab2c94b00ee5cf)
+
+<p align="center">
+<img title="Allure TestOps Launch screenshot" src="images/screenshots/BS-build.PNG">
+</p>
