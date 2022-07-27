@@ -1,9 +1,11 @@
 # Automated web/mobile/api tests for the [Todoist](http://todoist.com/) task manager  - graduation project ([QA.GURU](https://qa.guru/) school)
-<p align="left">
+<p align="center">
 <img title="Todoist" src="images/logo/todoist.PNG">
 </p>
 
-##  :page_with_curl: Content
+<a id="lift"></a>
+
+## :page_with_curl: Content
 
 ➠ [Test cases](#TestCases)
 
@@ -11,21 +13,31 @@
 
 ➠ [Launch from the terminal](#Terminal)
 
-➠ [Jenkins job](#Jenkins)
+➠ [Jenkins build](#Jenkins)
+
+➠ [Allure Report integration](#Report)
+
+➠ [Allure TestOps integration](#TestOps)
+
+➠ [Browserstack build](#Browserstack)
+
+➠ [Notifications on Telegram](#Telegram)
+
+➠ [Video examples](#Video)
 
 ## :globe_with_meridians: <a name="TestCases"></a> Test cases
 - ### WEB
-<p align="left">
+<p align="center">
 <img title="Web" src="images/screenshots/Web.PNG">
 </p>
 
 - ### API
-<p align="left">
+<p align="center">
 <img title="Api" src="images/screenshots/Api.PNG">
 </p>
 
 - ### MOBILE
-<p align="left">
+<p align="center">
 <img title="Mobile" src="images/screenshots/Mobile.PNG">
 </p>
 
@@ -91,7 +103,7 @@
         State18 --> State8
         State12 --> State8
         note right of State2 : Code writing
-        note left of State3 : Frameworks
+        note left of State3 : Testing frameworks
         note left of State4 : Version Control System
         note left of State5 : Project building
         note left of State6 : Automation server
@@ -107,13 +119,27 @@
 ## :technologist: <a name="Terminal"></a> Launch from the terminal
 
 ### Local test run:
-
+> There are config files with parameters for launch tests <br>
+> in the resources/configuration directory. <br>
+> It's required to fill in the following files: <br>
+> src/test/resources/config/web/local.properties <br>
+> src/test/resources/config/mobile/emulation.properties <br>
+> (examples are included to this github project). <br>
+> Once it's done, you can run the following commands:
 ```
+gradle clean webTests
 gradle clean mobileTests -DmobileDeviceHost=emulation
 ```
 
 ### Remote test run:
-
+> There are config files with parameters for launch tests <br>
+> in the resources/configuration directory. <br>
+> It's required to fill in the following files: <br>
+> src/test/resources/config/web/remote.properties <br>
+> src/test/resources/config/mobile/browserstack.properties <br>
+> src/test/resources/config/api/api.properties <br>
+> (examples are included to this github project). <br>
+> Once it's done, you can run the following commands:
 ```
 gradle clean 
 ${TYPE}Tests
@@ -127,4 +153,81 @@ A --> E[mobile]
 A --> F[all]
 ```
 
-## <a name="Jenkins"></a><img width="4%" title="Jenkins" src="images/logo/Jenkins.svg"> Jenkins [job](https://jenkins.autotests.cloud/job/SergeevSS90-Diploma-todoist/)
+## <a name="Jenkins"></a><img width="4%" title="Jenkins" src="images/logo/Jenkins.svg"> Jenkins [build](https://jenkins.autotests.cloud/job/SergeevSS90-Diploma-todoist/)
+
+<p align="center">
+  <img src="images/screenshots/Jenkins.PNG">
+</p>
+
+### :robot: Build Options
+
+<p align="center">
+  <img src="images/screenshots/BuildOptions.PNG">
+</p>
+
+## <a name="Report"></a><img width="4%" title="Allure Report" src="images/logo/Allure_Report.svg"> Allure [Report](https://jenkins.autotests.cloud/job/SergeevSS90-Diploma-todoist/)
+
+### Overview
+
+<p align="center">
+<img title="Allure reports Overview tab screenshot" src="images/screenshots/AR-main_page.PNG">
+</p>
+
+### Test Suites
+
+<p align="center">
+<img title="Allure reports Test suites tab screenshot" src="images/screenshots/AR-test_cases.PNG">
+</p>
+
+### Graphs
+
+<p align="center">
+<img title="Allure reports Behaviors tab screenshot" src="images/screenshots/AR-graphs.PNG">
+</p>
+
+## <a name="TestOps"></a><img width="4%" title="Allure TestOps" src="images/logo/Allure_TO.svg"> Allure [TestOps](https://allure.autotests.cloud/project/1501/)
+
+### Dashboards
+
+<p align="center">
+<img title="Allure TestOps Dashboard screenshot" src="images/screenshots/ATO-dashboards.PNG">
+</p>
+
+### Test cases
+
+<p align="center">
+<img title="Allure Test cases Dashboard screenshot" src="images/screenshots/ATO-test_cases.PNG">
+</p>
+
+### Launch
+
+<p align="center">
+<img title="Allure TestOps Launch screenshot" src="images/screenshots/ATO-launch.PNG">
+</p>
+
+## <a name="Browserstack"></a><img width="4%" title="Browserstack" src="images/logo/Browserstack.svg"> Browserstack [build](https://app-automate.browserstack.com/dashboard/v2/builds/264e9773671aa545dbd91104f9a82bd569c9d8e2/sessions/ebaf2579855ea6f0025e3eb466ab2c94b00ee5cf)
+
+<p align="center">
+<img title="Browserstack build" src="images/screenshots/BS-build.PNG">
+</p>
+
+## <a name="Telegram"></a><img width="4%" title="Telegram" src="images/logo/Telegram.svg"> Notification on Telegram
+
+<p align="center">
+  <img src="images/screenshots/TG.PNG">
+</p>
+
+## <a name="Video"></a> :tv: Video examples
+### Selenoid - web browser
+
+<p align="center">
+<img src="images/gifs/AddTaskWeb.gif" alt="video" width="600">
+</p>
+
+### Browserstack - mobile application
+
+<p align="center">
+<img src="images/gifs/AddTaskMobile.gif" alt="video" width="600">
+</p>
+
+:arrow_up: [Go up](#lift)
