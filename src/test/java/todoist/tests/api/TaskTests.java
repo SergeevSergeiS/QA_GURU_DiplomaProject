@@ -3,7 +3,7 @@ package todoist.tests.api;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import todoist.models.CreateRequestBuilder;
+import todoist.models.CreateRequest;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
@@ -18,8 +18,8 @@ public class TaskTests extends TestBase {
     @Test
     @DisplayName("Add task")
     void addNewTaskTest() {
-        CreateRequestBuilder createCredentials = new CreateRequestBuilder();
-        final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];
+        CreateRequest createCredentials = new CreateRequest();
+        final CreateRequest[] projectData = new CreateRequest[1];
         createCredentials.setContent(taskName);
         createCredentials.setProjectId(projectNumber);
 
@@ -31,7 +31,7 @@ public class TaskTests extends TestBase {
                     .post("/tasks")
                     .then()
                     .spec(response200)
-                    .extract().as(CreateRequestBuilder.class);
+                    .extract().as(CreateRequest.class);
         });
         step("Check task name", () ->
                 assertEquals(taskName, projectData[0].getContent()));

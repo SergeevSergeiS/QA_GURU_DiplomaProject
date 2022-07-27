@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateRequestBuilder {
+public class CreateRequest {
     private String name;
     private String content;
     @JsonProperty("project_id")

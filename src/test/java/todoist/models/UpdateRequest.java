@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UpdateRequestBuilder {
+public class UpdateRequest {
     private String name;
     private long id;
 }

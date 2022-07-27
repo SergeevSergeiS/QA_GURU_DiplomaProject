@@ -3,8 +3,8 @@ package todoist.tests.api;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import todoist.models.CreateRequestBuilder;
-import todoist.models.UpdateRequestBuilder;
+import todoist.models.CreateRequest;
+import todoist.models.UpdateRequest;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
@@ -34,7 +34,7 @@ public class ProjectTests extends TestBase {
     @Test
     @DisplayName("Get one particular user's project")
     void getSingleProjectTest() {
-        final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];
+        final CreateRequest[] projectData = new CreateRequest[1];
 
         step("Get user's project", () -> {
             projectData[0] = given()
@@ -43,7 +43,7 @@ public class ProjectTests extends TestBase {
                     .get("/projects/" + projectNumber)
                     .then()
                     .spec(response200)
-                    .extract().as(CreateRequestBuilder.class);
+                    .extract().as(CreateRequest.class);
         });
         step("Check project id in response", () ->
                 assertEquals(projectNumber, projectData[0].getId()));
@@ -52,8 +52,8 @@ public class ProjectTests extends TestBase {
     @Test
     @DisplayName("Add project")
     void addNewProjectTest() {
-        CreateRequestBuilder createCredentials = new CreateRequestBuilder();
-        final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];
+        CreateRequest createCredentials = new CreateRequest();
+        final CreateRequest[] projectData = new CreateRequest[1];
         createCredentials.setName(projectName);
 
         step("Create project", () -> {
@@ -64,7 +64,7 @@ public class ProjectTests extends TestBase {
                     .post("/projects")
                     .then()
                     .spec(response200)
-                    .extract().as(CreateRequestBuilder.class);
+                    .extract().as(CreateRequest.class);
         });
         step("Check project id in response", () ->
                 assertEquals(projectName, projectData[0].getName()));
@@ -73,9 +73,9 @@ public class ProjectTests extends TestBase {
     @Test
     @DisplayName("Update project name")
     public void updateProjectTest() {
-        UpdateRequestBuilder oldCreateCredentials = new UpdateRequestBuilder();
-        final CreateRequestBuilder[] projectData = new CreateRequestBuilder[1];
-        UpdateRequestBuilder newCreateCredentials = new UpdateRequestBuilder();
+        UpdateRequest oldCreateCredentials = new UpdateRequest();
+        final CreateRequest[] projectData = new CreateRequest[1];
+        UpdateRequest newCreateCredentials = new UpdateRequest();
         final long[] id = new long[1];
         oldCreateCredentials.setName(outdatedTaskName);
         newCreateCredentials.setName(updatedTaskName);
@@ -109,7 +109,7 @@ public class ProjectTests extends TestBase {
                     .get("/projects/" + id[0])
                     .then()
                     .spec(response200)
-                    .extract().as(CreateRequestBuilder.class);
+                    .extract().as(CreateRequest.class);
         });
         step("Check project name", () -> {
             assertNotEquals(outdatedTaskName, projectData[0].getName());
@@ -120,7 +120,7 @@ public class ProjectTests extends TestBase {
     @Test
     @DisplayName("Delete project")
     void deleteProject() {
-        UpdateRequestBuilder credentials = new UpdateRequestBuilder();
+        UpdateRequest credentials = new UpdateRequest();
         final long[] id = new long[1];
         credentials.setName(removedProjectName);
 

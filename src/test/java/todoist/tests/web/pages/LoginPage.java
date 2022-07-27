@@ -1,9 +1,9 @@
 package todoist.tests.web.pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -34,7 +34,7 @@ public class LoginPage {
     }
 
     public LoginPage checkLoginButton() {
-        loginButton.shouldBe(Condition.visible);
+        loginButton.shouldBe(visible);
         return this;
     }
 }
